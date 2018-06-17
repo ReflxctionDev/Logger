@@ -32,8 +32,9 @@ To your repositories:
 	}
     }
 ```
+To your dependencies:
 ```gradle
   dependencies {
-       implementation 'com.github.ReflxctionDev:Logger:1.0-SNAPSHOT'
+       compile 'com.github.ReflxctionDev:Logger:1.0-SNAPSHOT'
   }
 ```
