@@ -13,7 +13,8 @@ To your repositories:
 		    <url>https://jitpack.io</url>
 		</repository>
 	   ...
-  </repositories>```
+  </repositories>
+```
   
 And to your dependencies:  
 ```xml
@@ -21,20 +22,22 @@ And to your dependencies:
 	    <groupId>com.github.ReflxctionDev</groupId>
 	    <artifactId>Logger</artifactId>
 	    <version>1.0-SNAPSHOT</version>
-	</dependency>```
+	</dependency>
+```
   
-  ## Gradle:
-  Add this to your `build.gradle`:
-  To your repositories:
-  ```gradle
+## Gradle:
+Add this to your `build.gradle`:
+To your repositories:
+```gradle
   	allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
-	}```
-  
-  ```gradle
+	}
+```
+```gradle
   	dependencies {
 	        implementation 'com.github.ReflxctionDev:Logger:1.0-SNAPSHOT'
-	}```
+	}
+```
