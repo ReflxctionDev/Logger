@@ -17,7 +17,7 @@ package net.reflxction.logger.core;
 
 public enum LoggerLevel {
 
-    // Success of something
+    // Success of an action/a method
     SUCCESS("[Success]"),
 
     // Warning, the program may not function correctly, but will function

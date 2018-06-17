@@ -24,11 +24,11 @@ import org.json.JSONTokener;
 
 public class LoggerUtils {
 
-    // Instance of the OkHttpClient class.
+    // Instance of the OkHttpClient class
     private static OkHttpClient httpClient = new OkHttpClient.Builder().build();
 
     /**
-     * Creates a Hastebin link with the entered text
+     * Creates a Hastebin link with the entered text.
      *
      * @param text Text to be included in the hastebin url
      * @return Link with the hastebin page which contains the given text

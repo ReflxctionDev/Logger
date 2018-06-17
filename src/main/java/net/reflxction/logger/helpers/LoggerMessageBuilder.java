@@ -17,6 +17,9 @@ package net.reflxction.logger.helpers;
 
 import java.util.List;
 
+/**
+ * A helper class to build a message for the logger
+ */
 public class LoggerMessageBuilder {
 
     // Message
