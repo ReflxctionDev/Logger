@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Logger class.
+ * Logger class
  */
 public class Logger {
 
