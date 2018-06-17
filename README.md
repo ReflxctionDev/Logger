@@ -19,6 +19,7 @@ And to your dependencies:
 	<groupId>com.github.ReflxctionDev</groupId>
 	<artifactId>Logger</artifactId>
 	<version>1.0-SNAPSHOT</version>
+	<scope>compile</scope>
     </dependency>
 ```
   
