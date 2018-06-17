@@ -7,7 +7,7 @@ Add this to your `pom.xml`:
 To your repositories:
 ```xml
   <repositories>
-	 <repository>
+      <repository>
 	 <id>jitpack.io</id>
 	 <url>https://jitpack.io</url>
       </repository>
