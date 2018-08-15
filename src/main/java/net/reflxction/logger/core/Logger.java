@@ -15,6 +15,8 @@
  */
 package net.reflxction.logger.core;
 
+import net.reflxction.logger.utils.Debugger;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,6 +32,9 @@ public class Logger {
 
     // The logger settings
     private LoggerSettings settings;
+
+    // Debugger of this logger
+    private Debugger debugger;
 
     // List which contains all loggers
     private static List<Logger> loggers = new ArrayList<>();
@@ -54,6 +59,7 @@ public class Logger {
         this.name = name;
         this.settings = settings;
         loggers.add(this);
+        debugger = new Debugger(this);
     }
 
 
@@ -159,12 +165,26 @@ public class Logger {
         return String.format("[%s]", dateFormat);
     }
 
+    /**
+     * The separators as a string, e.g "--------------------"
+     *
+     * @return The separators as a string, e.g "--------------------"
+     */
     private String getRepeatedSeparator() {
         StringBuilder builder = new StringBuilder(settings.getSeparatorChar());
         for (int i = 0; i < 15; i++) {
             builder.append(settings.getSeparatorChar());
         }
         return builder.toString();
+    }
+
+    /**
+     * Returns the debugger assigned with this logger
+     *
+     * @return The debugger assigned with this logger
+     */
+    public Debugger getDebugger() {
+        return debugger;
     }
 
     /**
@@ -181,6 +201,4 @@ public class Logger {
         }
         return new Logger(name);
     }
-
-
 }
