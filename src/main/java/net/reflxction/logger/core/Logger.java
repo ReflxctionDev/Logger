@@ -35,7 +35,20 @@ public class Logger {
     private static List<Logger> loggers = new ArrayList<>();
 
     /**
+     * Creates a new logger with the default settings
+     *
      * @param name Name of the logger which it should be known with
+     */
+    public Logger(String name) {
+        this(name, new LoggerSettings().setTimestamps(true));
+    }
+
+    /**
+     * Initiates a new logger with the given settings
+     *
+     * @param name     Name of the logger which it should be known with
+     * @param settings Settings of the logger
+     * @see LoggerSettings
      */
     public Logger(String name, LoggerSettings settings) {
         this.name = name;
@@ -48,7 +61,7 @@ public class Logger {
      * Prints a separator
      */
     private void printSeparator() {
-        if (settings.separators()) print(getRepeatedSeparator());
+        if (settings.separators()) printRaw(getRepeatedSeparator());
     }
 
     /**
@@ -61,11 +74,11 @@ public class Logger {
     public void print(String message, LoggerLevel level) {
         if (level != LoggerLevel.INFO) {
             printSeparator();
-            print("[" + name + "] " + level + " - " + message);
+            printRaw("[" + name + "] " + level + " - " + message);
             printSeparator();
         } else {
             printSeparator();
-            print("[" + name + "] - " + message);
+            printRaw("[" + name + "] - " + message);
             printSeparator();
         }
     }
@@ -130,7 +143,7 @@ public class Logger {
      * @param object Object to print
      * @see java.io.PrintStream
      */
-    private void print(Object object) {
+    public void printRaw(Object object) {
         if (settings.timestamps()) System.out.println(getTimestamp() + " " + object.toString());
         else System.out.println(object.toString());
     }
@@ -166,7 +179,7 @@ public class Logger {
                 return logger;
             }
         }
-        return new Logger(name, new LoggerSettings().setTimestamps(true));
+        return new Logger(name);
     }
 
 
