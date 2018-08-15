@@ -29,6 +29,9 @@ public class LoggerSettings {
     // Whether it should print timestamps or not (e.g [HH:MM:SS])
     private boolean timestamps = true;
 
+    // The default settings for the logger
+    public static final LoggerSettings DEFAULT = new LoggerSettings().setTimestamps(true);
+
     /**
      * Whether it should print separators when logging or not
      *
