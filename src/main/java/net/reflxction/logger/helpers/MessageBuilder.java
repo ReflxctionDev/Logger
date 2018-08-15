@@ -18,7 +18,7 @@ package net.reflxction.logger.helpers;
 
 import java.util.List;
 
-public class LoggerMessageBuilder {
+public class MessageBuilder {
 
     // Message
     private String message;
@@ -29,7 +29,7 @@ public class LoggerMessageBuilder {
     /**
      * @param message Message that the logger will start on
      */
-    public LoggerMessageBuilder(String message) {
+    public MessageBuilder(String message) {
         this.message = message;
         this.builder = new StringBuilder(message);
     }
@@ -39,7 +39,7 @@ public class LoggerMessageBuilder {
      *
      * @param message Text to add
      */
-    public LoggerMessageBuilder append(String message) {
+    public MessageBuilder append(String message) {
         builder.append(message);
         return this;
     }
@@ -47,7 +47,7 @@ public class LoggerMessageBuilder {
     /**
      * Reverses the current string (e.g "Hi" becomes "iH")
      */
-    public LoggerMessageBuilder reverse() {
+    public MessageBuilder reverse() {
         builder.reverse();
         return this;
     }
@@ -66,7 +66,7 @@ public class LoggerMessageBuilder {
      *
      * @param messages Array to add
      */
-    public LoggerMessageBuilder append(String[] messages) {
+    public MessageBuilder append(String[] messages) {
         for (String m : messages) {
             builder.append(m);
         }
@@ -78,7 +78,7 @@ public class LoggerMessageBuilder {
      *
      * @param messages List to add
      */
-    public LoggerMessageBuilder append(List<String> messages) {
+    public MessageBuilder append(List<String> messages) {
         for (String m : messages) {
             builder.append(m);
         }
@@ -88,7 +88,7 @@ public class LoggerMessageBuilder {
     /**
      * Adds a new line to the string (portable)
      */
-    public LoggerMessageBuilder addNewLine() {
+    public MessageBuilder addNewLine() {
         builder.append(System.lineSeparator());
         return this;
     }
