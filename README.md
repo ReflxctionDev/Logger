@@ -18,7 +18,7 @@ And to your dependencies:
     <dependency>
 	<groupId>com.github.ReflxctionDev</groupId>
 	<artifactId>Logger</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.1-SNAPSHOT</version>
 	<scope>compile</scope>
     </dependency>
 ```
@@ -36,6 +36,6 @@ To your repositories:
 To your dependencies:
 ```gradle
   dependencies {
-       compile 'com.github.ReflxctionDev:Logger:1.0-SNAPSHOT'
+       compile 'com.github.ReflxctionDev:Logger:1.1-SNAPSHOT'
   }
 ```
