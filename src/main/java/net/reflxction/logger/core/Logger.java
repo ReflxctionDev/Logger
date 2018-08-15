@@ -45,7 +45,7 @@ public class Logger {
      * @param name Name of the logger which it should be known with
      */
     public Logger(String name) {
-        this(name, new LoggerSettings().setTimestamps(true));
+        this(name, LoggerSettings.DEFAULT);
     }
 
     /**
