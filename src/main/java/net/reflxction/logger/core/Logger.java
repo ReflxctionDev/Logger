@@ -15,7 +15,9 @@
  */
 package net.reflxction.logger.core;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,11 +28,8 @@ public class Logger {
     // Name of the logger
     private String name;
 
-    // If it should add separators
-    private boolean separators = false;
-
-    // String which is a repeating character between every message that is printed
-    private String sep;
+    // The logger settings
+    private LoggerSettings settings;
 
     // List which contains all loggers
     private static List<Logger> loggers = new ArrayList<>();
@@ -38,11 +37,18 @@ public class Logger {
     /**
      * @param name Name of the logger which it should be known with
      */
-    public Logger(String name, boolean separators) {
+    public Logger(String name, LoggerSettings settings) {
         this.name = name;
-        this.separators = separators;
-        this.sep = "";
+        this.settings = settings;
         loggers.add(this);
+    }
+
+
+    /**
+     * Prints a separator
+     */
+    private void printSeparator() {
+        if (settings.separators()) print(getRepeatedSeparator());
     }
 
     /**
@@ -54,13 +60,13 @@ public class Logger {
      */
     public void print(String message, LoggerLevel level) {
         if (level != LoggerLevel.INFO) {
-            if(separators) print(getRepeatedSeparator());
+            printSeparator();
             print("[" + name + "] " + level + " - " + message);
-            if(separators) print(getRepeatedSeparator());
+            printSeparator();
         } else {
-            if(separators) print(getRepeatedSeparator());
+            printSeparator();
             print("[" + name + "] - " + message);
-            if(separators) print(getRepeatedSeparator());
+            printSeparator();
         }
     }
 
@@ -125,31 +131,25 @@ public class Logger {
      * @see java.io.PrintStream
      */
     private void print(Object object) {
-        System.out.println(object.toString());
+        if (settings.timestamps()) System.out.println(getTimestamp() + " " + object.toString());
+        else System.out.println(object.toString());
     }
 
     /**
-     * Set if it should add separators between logged messages
+     * Returns a timestamp in the [HH:mm:ss] format
      *
-     * @param flag If it should add separators
+     * @return The current timestamp in the [HH:mm:ss] format
      */
-    public void setSeperators(boolean flag) {
-        this.separators = flag;
-    }
-
-    /**
-     * Set the separator string which repeats
-     *
-     * @param sep String to set the separator to
-     */
-    public void setSeparatorString(String sep) {
-        this.sep = sep;
+    private String getTimestamp() {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        String dateFormat = sdf.format(new Date());
+        return String.format("[%s]", dateFormat);
     }
 
     private String getRepeatedSeparator() {
-        StringBuilder builder = new StringBuilder(sep);
+        StringBuilder builder = new StringBuilder(settings.getSeparatorChar());
         for (int i = 0; i < 15; i++) {
-            builder.append(sep);
+            builder.append(settings.getSeparatorChar());
         }
         return builder.toString();
     }
@@ -166,7 +166,7 @@ public class Logger {
                 return logger;
             }
         }
-        return new Logger(name, false);
+        return new Logger(name, new LoggerSettings().setTimestamps(true));
     }
 
 
